@@ -30,6 +30,7 @@ done
 #------------------------------------
 
 
+
 # Node version manager
 if ! [ -x "$(command -v nvm)" ]; then
     echo "NVM is already installed"
