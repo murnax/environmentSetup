@@ -7,12 +7,14 @@ YELLOW=$(tput setaf 3)
 ARROW="$CYAN$BOLD==>$DEFAULT"
 ARROW_YELLOW="$YELLOW$BOLD==>$DEFAULT"
 
-BREW_APPLICATIONS=(jq git)
+BREW_APPLICATIONS=(jq git zsh zsh-completions zsh-syntax-highlighting)
 CASK_APPLICATIONS=(google-chrome postman slack sourcetree visual-studio-code docker evernote iterm2 android-file-transfer the-unarchiver)
 VS_CODE_EXTENSIONS=(eamodio.gitlens donjayamanne.githistory esbenp.prettier-vscode VisualStudioExptTeam.vscodeintellicode)
 NPM_GLOBAL_MODULES=(typescript ts-node pm2)
 
+#----------
 # Homebrew
+#----------
 if $IS_HOMEBREW_INSTALLED; then
     # brew update
     # brew upgrade
@@ -46,9 +48,25 @@ for extension in "${VS_CODE_EXTENSIONS[@]}"; do
     code --install-extension ${extension}
 done
 
+#--------
+# iTerm2 & Zsh
+#--------
 
+# Oh my Zsh
+echo "${ARROW} Installing Oh my Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# Node version manager
+# Powerlevel10k
+echo "${ARROW} Installing Powerlevel10k..."
+git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+
+cp .zshrc ~
+
+#------------------------------
+# NVM & Node & Global Packages
+#------------------------------
+
+#NVM
 if ! [ -x "$(command -v nvm)" ]; then
     echo "NVM is already installed"
 else
