@@ -5,14 +5,7 @@ YELLOW=$(tput setaf 3)
 ARROW_YELLOW="$YELLOW$BOLD==>$DEFAULT"
 
 CASK_APPLICATIONS=(google-chrome postman slack git sourcetree visual-studio-code docker evernote)
-NODE
-VS_CODE_EXTENSIONS=(eamodio.gitlens esbenp.prettier-vscode)
-
-IS_HOMEBREW_INSTALLED=false
-
-# if hash brew 2>/dev/null; then
-#     IS_HOMEBREW_INSTALLED=true
-# fi
+VS_CODE_EXTENSIONS=(eamodio.gitlens donjayamanne.githistory esbenp.prettier-vscode)
 
 # Homebrew
 if $IS_HOMEBREW_INSTALLED; then
